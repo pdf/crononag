@@ -1,0 +1,18 @@
+Source: crononag
+Section: utils
+Priority: extra
+Maintainer: Peter Fern <golang@0xc0dedbad.com>
+Build-Depends: debhelper (>= 9.1.0), golang-go | go
+Standards-Version: 3.9.4
+
+Package: crononag
+Provides: crononag
+Breaks: crononag
+Architecture: any
+Description: A super-simple wrapper for wrap commands running from cron to
+ limit nagging emails
+
+Package: crononag-dev
+Architecture: all
+Description: A super-simple wrapper for wrap commands running from cron to
+ limit nagging emails

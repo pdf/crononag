@@ -1,0 +1,25 @@
+{
+	"ArtifactsDest": "build",
+	"Tasks": [
+		"default",
+		"tag",
+    "publish-github"
+	],
+	"BuildConstraints": "!plan9",
+	"MainDirsExclude": "build",
+	"PackageVersion": "0.0.1",
+	"TaskSettings": {
+    "deb": {
+      "metadata": {
+        "maintainer": "Peter Fern",
+        "maintainerEmail": "golang@0xc0dedbad.com"
+      }
+    },
+		"publish-github": {
+      "body": "",
+			"owner": "pdf",
+			"repository": "crononag"
+		}
+	},
+	"ConfigVersion": "0.9"
+}
