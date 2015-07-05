@@ -74,6 +74,7 @@ func main() {
 	app.Name = `crononag`
 	app.Usage = `wrap commands running from cron to limit nagging emails`
 	app.Version = VERSION
+	app.HideHelp = true
 	app.Flags = []cli.Flag{
 		cli.IntSliceFlag{
 			Name:  `E, suppress-exit-code`,
