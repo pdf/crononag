@@ -1,22 +1,22 @@
 {
 	"ArtifactsDest": "build",
 	"Tasks": [
+		"interpolate-source",
 		"default",
-		"tag",
-    "publish-github"
+		"publish-github"
 	],
-	"BuildConstraints": "!plan9",
+	"BuildConstraints": "!plan9,!nacl",
 	"MainDirsExclude": "build",
 	"PackageVersion": "0.0.1",
 	"TaskSettings": {
-    "deb": {
-      "metadata": {
-        "maintainer": "Peter Fern",
-        "maintainerEmail": "golang@0xc0dedbad.com"
-      }
-    },
+		"deb": {
+			"metadata": {
+				"maintainer": "Peter Fern",
+				"maintainerEmail": "golang@0xc0dedbad.com"
+			}
+		},
 		"publish-github": {
-      "body": "",
+			"body": "",
 			"owner": "pdf",
 			"repository": "crononag"
 		}
