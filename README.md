@@ -41,7 +41,9 @@ Currently, `crononag` supports only very simple options:
 
 ```
 -E, --suppress-exit-code [-E option -E option]       suppress output for specified exit code(s), may specify multiple times, defaults to 0
--O, --suppress-stdout                                suppress stdout, even on error
+-R, --suppress-regexp [-R option -R option]          suppress output on matching regexp, may specify multiple times
+-O, --omit-stdout                                    omit stdout, even on error, defaults to false
+-f, --force-regexp [-f option -f option]             force output on matching regexp, may specify multiple times, overrides suppression
 ```
 
 ## License
