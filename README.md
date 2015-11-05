@@ -6,7 +6,7 @@ limit nagging emails.
 ## Motivation
 
 There are a couple of existing cron wrappers around, but I needed to be able to
-customize the suppressed exit codes, and optionally always supress stdout.  I
+customize the suppressed exit codes, and optionally always suppress stdout.  I
 also wanted a simple deploy story.  Existing solutions didn't meet these
 criteria, so I wrote this.
 
@@ -15,7 +15,7 @@ Since its inception, it has grown some additional useful features, including:
 - Suppressing output based on matching regexp, regardless of exit code
 - Forcing output based on matching regexp, regardless of exit code
 - Ability to sleep for a random duration (up to a specified maximum), e.g. to
-  spread load over a time window for jobs that run on multple hosts
+  spread load over a time window for jobs that run on multiple hosts
 
 ## Usage
 
@@ -40,7 +40,7 @@ diff a/cronjob b/cronjob
 ```
 
 Now, your job will only produce output in the event of a non-zero exit code.
-Supressed exit codes may set using the option below.
+Suppressed exit codes may be set using the option below.
 
 ### Options
 
