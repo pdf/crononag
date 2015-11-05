@@ -3,15 +3,18 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"math/rand"
 	"os"
 	"os/exec"
 	"regexp"
 	"syscall"
+	"time"
 
 	"github.com/codegangsta/cli"
 )
 
 const (
+	// VERSION of crononag
 	VERSION = "0.0.2"
 )
 
@@ -37,6 +40,16 @@ func run(c *cli.Context) {
 		cmd = exec.Command(args[0], args[1:len(args)]...)
 	} else {
 		cmd = exec.Command(args[0])
+	}
+
+	splay := c.Duration(`splay`)
+	if splay > 0 {
+		rand.Seed(time.Now().UnixNano())
+		rsplayf := splay.Seconds() * rand.Float64()
+		rsplay, err := time.ParseDuration(fmt.Sprintf("%fs", rsplayf))
+		if err == nil {
+			time.Sleep(rsplay)
+		}
 	}
 
 	var (
@@ -121,7 +134,13 @@ func main() {
 			Name:  `f, force-regexp`,
 			Usage: `force output on matching regexp, may specify multiple times, overrides suppression`,
 		},
+		cli.DurationFlag{
+			Name:  `s, splay`,
+			Usage: `sleep for a random duration, up to the specified maximum, format is <decimal><unit>, eg: "5s", "2h45m", "12h", defaults to 0`,
+		},
 	}
 	app.Action = run
-	app.Run(os.Args)
+	if err := app.Run(os.Args); err != nil {
+		panic(err)
+	}
 }

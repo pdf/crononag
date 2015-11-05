@@ -44,6 +44,7 @@ Currently, `crononag` supports only very simple options:
 -R, --suppress-regexp [-R option -R option]          suppress output on matching regexp, may specify multiple times
 -O, --omit-stdout                                    omit stdout, even on error, defaults to false
 -f, --force-regexp [-f option -f option]             force output on matching regexp, may specify multiple times, overrides suppression
+-s, --splay "0"                                      sleep for a random duration, up to the specified maximum, format is <decimal><unit>, eg: "5s", "2h45m", "12h", defaults to 0
 ```
 
 ## License
