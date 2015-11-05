@@ -10,6 +10,13 @@ customize the suppressed exit codes, and optionally always supress stdout.  I
 also wanted a simple deploy story.  Existing solutions didn't meet these
 criteria, so I wrote this.
 
+Since its inception, it has grown some additional useful features, including:
+
+- Suppressing output based on matching regexp, regardless of exit code
+- Forcing output based on matching regexp, regardless of exit code
+- Ability to sleep for a random duration (up to a specified maximum), e.g. to
+  spread load over a time window for jobs that run on multple hosts
+
 ## Usage
 
 ```
