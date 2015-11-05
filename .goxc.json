@@ -15,7 +15,7 @@
 	],
 	"BuildConstraints": "!plan9,!nacl",
 	"MainDirsExclude": "build",
-	"PackageVersion": "0.0.2",
+	"PackageVersion": "0.0.3",
 	"TaskSettings": {
 		"deb": {
 			"metadata": {

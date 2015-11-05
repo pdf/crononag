@@ -15,7 +15,7 @@ import (
 
 const (
 	// VERSION of crononag
-	VERSION = "0.0.2"
+	VERSION = "0.0.3"
 )
 
 func run(c *cli.Context) {

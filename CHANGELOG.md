@@ -1,4 +1,14 @@
 
+<a name="v0.0.3"></a>
+# v0.0.3 (2015-11-05)
+
+## :sparkles: Features
+
+- **core**:
+  - Add `splay` option ([86f6e688](https://github.com/pdf/crononag/commit/86f6e68855bdbe1efd3dd870b9a5d4eb7e4ff3af))  
+    <br>Allows delaying job execution by a random interval
+
+
 <a name="v0.0.2"></a>
 # v0.0.2 (2015-07-08)
 
