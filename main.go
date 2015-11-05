@@ -18,6 +18,8 @@ const (
 	VERSION = "0.0.3"
 )
 
+type regexpSlice []*regexp.Regexp
+
 func run(c *cli.Context) {
 	args := c.Args()
 	if len(c.Args()) == 0 {
@@ -25,12 +27,14 @@ func run(c *cli.Context) {
 		os.Exit(1)
 	}
 
-	suppressRegexpSlice := make([]*regexp.Regexp, len(c.StringSlice(`suppress-regexp`)))
+	doSplay(c)
+
+	suppressRegexpSlice := make(regexpSlice, len(c.StringSlice(`suppress-regexp`)))
 	for i, s := range c.StringSlice(`suppress-regexp`) {
 		suppressRegexpSlice[i] = regexp.MustCompile(s)
 	}
 
-	forceRegexpSlice := make([]*regexp.Regexp, len(c.StringSlice(`force-regexp`)))
+	forceRegexpSlice := make(regexpSlice, len(c.StringSlice(`force-regexp`)))
 	for i, s := range c.StringSlice(`force-regexp`) {
 		forceRegexpSlice[i] = regexp.MustCompile(s)
 	}
@@ -42,16 +46,17 @@ func run(c *cli.Context) {
 		cmd = exec.Command(args[0])
 	}
 
-	splay := c.Duration(`splay`)
-	if splay > 0 {
-		rand.Seed(time.Now().UnixNano())
-		rsplayf := splay.Seconds() * rand.Float64()
-		rsplay, err := time.ParseDuration(fmt.Sprintf("%fs", rsplayf))
-		if err == nil {
-			time.Sleep(rsplay)
-		}
-	}
+	doCmd(c, cmd, forceRegexpSlice, suppressRegexpSlice)
+}
 
+func exit(out string, code int) {
+	if len(out) > 0 {
+		fmt.Fprintf(os.Stderr, "%s", out)
+	}
+	os.Exit(code)
+}
+
+func doCmd(c *cli.Context, cmd *exec.Cmd, forceRegexpSlice, suppressRegexpSlice regexpSlice) {
 	var (
 		out bytes.Buffer
 		err error
@@ -83,11 +88,16 @@ func run(c *cli.Context) {
 	}
 }
 
-func exit(out string, code int) {
-	if len(out) > 0 {
-		fmt.Fprintf(os.Stderr, "%s", out)
+func doSplay(c *cli.Context) {
+	splay := c.Duration(`splay`)
+	if splay > 0 {
+		rand.Seed(time.Now().UnixNano())
+		rsplayf := splay.Seconds() * rand.Float64()
+		rsplay, err := time.ParseDuration(fmt.Sprintf("%fs", rsplayf))
+		if err == nil {
+			time.Sleep(rsplay)
+		}
 	}
-	os.Exit(code)
 }
 
 func regexpSliceMatches(b []byte, regexpSlice []*regexp.Regexp) bool {
