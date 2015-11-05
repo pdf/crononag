@@ -54,6 +54,14 @@ Currently, `crononag` supports only very simple options:
 -s, --splay "0"                                      sleep for a random duration, up to the specified maximum, format is <decimal><unit>, eg: "5s", "2h45m", "12h", defaults to 0
 ```
 
+## Alternatives
+
+Here are some alternative implementations, in no particular order:
+
+- [shush](http://web.taranis.org/shush/)
+- [cronic](http://habilis.net/cronic/)
+- [cronwrap](https://www.uow.edu.au/~sah/cronwrap.html)
+
 ## License
 
 This project rocks and uses the MIT-LICENSE
