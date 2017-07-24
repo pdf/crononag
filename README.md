@@ -24,9 +24,9 @@ crononag [global options] command [command options] [arguments...]
 ```
 
 Simply [download](https://github.com/pdf/crononag/releases/latest)
-`crononag` and put it on your path, then add `crononag` in front of the
-executable in your cron definition and enjoy the silence.  You can remove any
-output redirections, eg:
+`crononag` and either install the package, or put it on your path, then add
+`crononag` in front of the executable in your cron definition and enjoy the
+silence.  You can remove any output redirections, eg:
 
 ```diff
 diff a/cronjob b/cronjob
